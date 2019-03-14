@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BreadcumbsComponent } from './breadcumbs/breadcumbs.component';
+
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BreadcumbsComponent } from './breadcumbs/breadcumbs.component';
+
 
 @NgModule({
-  declarations: [
-    BreadcumbsComponent,
-    HeaderComponent,
-    SidebarComponent
-  ],
-  exports:[
-    BreadcumbsComponent,
-    HeaderComponent,
-    SidebarComponent
-  ],
-  imports: [
-    CommonModule,
-  ]
+    declarations: [
+        PageNotFoundComponent,
+        HeaderComponent,
+        SidebarComponent,
+        BreadcumbsComponent,
+
+    ],
+    exports: [
+        PageNotFoundComponent,
+        HeaderComponent,
+        SidebarComponent,
+        BreadcumbsComponent,
+    ]
 })
 export class SharedModule { }
