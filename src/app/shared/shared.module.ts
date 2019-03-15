@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -7,18 +9,22 @@ import { BreadcumbsComponent } from './breadcumbs/breadcumbs.component';
 
 
 @NgModule({
-    declarations: [
-        PageNotFoundComponent,
-        HeaderComponent,
-        SidebarComponent,
-        BreadcumbsComponent,
+  imports: [
+    RouterModule,
+    CommonModule
+  ],
+  declarations: [
+    PageNotFoundComponent,
+    HeaderComponent,
+    SidebarComponent,
+    BreadcumbsComponent,
 
-    ],
-    exports: [
-        PageNotFoundComponent,
-        HeaderComponent,
-        SidebarComponent,
-        BreadcumbsComponent,
-    ]
+  ],
+  exports: [
+    PageNotFoundComponent,
+    HeaderComponent,
+    SidebarComponent,
+    BreadcumbsComponent,
+  ]
 })
 export class SharedModule { }

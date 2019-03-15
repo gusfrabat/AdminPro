@@ -1,0 +1,10 @@
+<h3>{{leyenda}}</h3>
+
+<div class="card">
+  <div class="card-body text-center">
+    <p>Aumentar o diminuir progress</p>
+    <button (click)="cambiarValor(5)" class="btn btn-success mr-1"><i class="mdi mdi-plus"></i></button>
+    <input #txtAncho type="number" name="ancho" [(ngModel)]="ancho" (ngModelChange)="onChange($event)" class="form-control col-4" maxlength="2">
+    <button (click)="cambiarValor(-5)" class="btn btn-danger ml-1"><i class="mdi mdi-minus"></i></button>
+  </div>
+</div>
