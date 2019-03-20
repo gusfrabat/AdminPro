@@ -9,7 +9,8 @@ export class ProgressComponent implements OnInit {
 
   ancho1 = 10;
   ancho2 = 45;
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
   }

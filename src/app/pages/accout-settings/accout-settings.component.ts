@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
 import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
@@ -9,7 +8,8 @@ import { SettingsService } from 'src/app/services/settings.service';
 })
 export class AccoutSettingsComponent implements OnInit {
 
-  constructor( private sS: SettingsService ) { }
+  constructor( private sS: SettingsService ) {
+  }
 
   ngOnInit() {
     this.colocarCheck();
