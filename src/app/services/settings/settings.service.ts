@@ -11,6 +11,7 @@ export class SettingsService {
     tema: 'default'
   };
 
+// tslint:disable-next-line: deprecation
   constructor( @Inject(DOCUMENT) private documento) {
     this.cargarAjustes();
   }

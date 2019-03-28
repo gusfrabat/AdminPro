@@ -12,7 +12,7 @@
               alt="user" /><span class="hide-menu">Steave Jobs</span></a>
           <ul aria-expanded="false" class="collapse">
             <li><a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard </a></li>
-            <li><a class="text-danger" [routerLink]="['/login']">Logout</a></li>
+            <li><a class="text-danger pointer" (click)="authS.logout()">Logout</a></li>
             <!-- <li><a class="text-danger" [routerLink]="['/login]">Logout</a></li> -->
           </ul>
         </li>
