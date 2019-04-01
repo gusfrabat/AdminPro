@@ -78,5 +78,10 @@ export class UsuarioService {
     }).catch( err => {
     });
   }
+
+  cargarUsuarios(desde: number = 0) {
+    const url = `${this.url}usuario/?desde=${desde}`;
+    return this.http.get(url);
+  }
 }
 

@@ -18,6 +18,9 @@ import { AccoutSettingsComponent } from './accout-settings/accout-settings.compo
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
 
 
 
@@ -32,7 +35,10 @@ import { ProfileComponent } from './profile/profile.component';
         AccoutSettingsComponent,
         PromesasComponent,
         RxjsComponent,
-        ProfileComponent
+        ProfileComponent,
+        UsuariosComponent,
+        MedicosComponent,
+        HospitalesComponent
     ],
     exports: [
         DashboardComponent,
