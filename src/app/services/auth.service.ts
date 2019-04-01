@@ -11,21 +11,29 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   url: string;
+  usuario: Usuario;
+  token: string;
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) {
     this.url = GLOBAL.url;
-   }
+  }
 
   isLogged() {
+    this.loadUser();
+    return ( this.token.length > 5 ) ? true : false;
+  }
+
+  loadUser() {
     if (localStorage.getItem('token')) {
-      return ( localStorage.getItem('token').length > 5 ) ? true : false;
+      this.token = localStorage.getItem('token');
+      this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    } else {
+      this.token = '';
+      this.usuario = null;
     }
-    localStorage.removeItem('token');
-    localStorage.removeItem('usuario');
-    return false;
   }
 
   logout() {

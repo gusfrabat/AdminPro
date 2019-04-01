@@ -72,8 +72,8 @@ export class RegisterComponent implements OnInit {
     }, {validators: this.sonIguales('password', 'password2')});
 
     this.forma.setValue ({
-      nombres: 'test ',
-      apellidos: 'test ',
+      nombres: 'test',
+      apellidos: 'test',
       email: 'test@test.test',
       password: '123456',
       password2: '123456',

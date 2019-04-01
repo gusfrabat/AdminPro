@@ -25,9 +25,7 @@ export class LoginComponent implements OnInit {
     private tP: Title,
     private authS: AuthService,
     private zone: NgZone
-  ) {
-    this.tP.setTitle('AdminPro | Login');
-  }
+  ) { }
 
   ngOnInit() {
     init_pluings();
@@ -36,6 +34,7 @@ export class LoginComponent implements OnInit {
     if (this.email) {
       this.recuerdame = true;
     }
+    this.tP.setTitle('AdminPro | Login');
   }
 
   googleInit() {
