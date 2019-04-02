@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from './auth.service';
 import { SubirArchivoService } from './settings/subir-archivo.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -82,6 +83,16 @@ export class UsuarioService {
   cargarUsuarios(desde: number = 0) {
     const url = `${this.url}usuario/?desde=${desde}`;
     return this.http.get(url);
+  }
+
+  buscarUsuarios(termino: string) {
+   const url = `${this.url}busqueda/usuario/${termino}`;
+   return this.http.get(url).pipe( map( (resp: any) => resp.usuarios));
+  }
+
+  borrarUsuario(id: string) {
+    const url = `${this.url}usuario/${id}?token=${this.token}`;
+    return this.http.delete(url);
   }
 }
 

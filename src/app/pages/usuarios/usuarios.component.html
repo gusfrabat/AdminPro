@@ -3,7 +3,8 @@
     <div class="col-12">
       <div class="card crdmr">
         <div class="card-body">
-          <input class="form-control" type="text" placeholder="Buscar usuario">
+          <input #input (keyup)="buscarUsuario(input.value)" class="form-control" type="text"
+            placeholder="Buscar usuario">
         </div>
       </div>
     </div>
@@ -21,7 +22,7 @@
     </dir>
   </div>
 
-  <div class="row">
+  <div *ngIf="!cargando" class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-body">
@@ -39,24 +40,30 @@
             </thead>
             <tbody>
               <tr *ngFor="let usuario of usuarios">
-                <td></td>
+                <td class="w70"><img (click)="abrirModal(usuario._id)" class="img50 img-circle pointer" [src]="usuario.img | imagen" [alt]="usuario.img | imagen">
+                </td>
                 <td>{{usuario.email}}</td>
                 <td>{{usuario.nombres}} {{usuario.apellidos}}</td>
-                <td>{{usuario.role}}</td>
                 <td>
-                  <label class="label label-danger">Google</label>
-                  <label class="label label-info">Normal</label>
+                  <select name="role" class="form-control" [(ngModel)]="usuario.role">
+                    <option value="ADMIN_ROL">ADMIN_ROL</option>
+                    <option value="USER_ROL">USER_ROL</option>
+                  </select>
                 </td>
                 <td>
-                  <button class="btn btn-success mr-1"><i class="fa fa-save"></i></button>
-                  <button class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                  <label *ngIf="usuario.google" class="label label-danger">Google</label>
+                  <label *ngIf="!usuario.google" class="label label-info">Normal</label>
+                </td>
+                <td>
+                  <button (click)="guardarUsuRol(usuario)" class="btn btn-success mr-1"><i class="fa fa-save"></i></button>
+                  <button (click)="borrarUsuario(usuario)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
                 </td>
               </tr>
             </tbody>
           </table>
           <div class="d-flex justify-content-around">
-            <button class="btn btn-secondary"> Anteriores</button>
-            <button class="btn btn-secondary"> Siguientes</button>
+            <button (click)="cambiarDesde(-5)" class="btn btn-secondary"> Anteriores</button>
+            <button (click)="cambiarDesde(5)" class="btn btn-secondary"> Siguientes</button>
           </div>
         </div>
       </div>
