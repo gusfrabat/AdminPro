@@ -77,6 +77,7 @@ export class UsuarioService {
       });
       this.authS.guardarStorage(this.token, this.usuario);
     }).catch( err => {
+      console.error(err);
     });
   }
 

@@ -1000,7 +1000,9 @@ File: scss
   position: relative; }
 
 .container-fluid {
-  padding: 25px 25px; }
+  padding: 25px 25px;
+  padding-bottom: 0px;
+}
 
 .card {
   margin-bottom: 30px; }

@@ -20,8 +20,8 @@ export class HospitalesService {
     this.token = localStorage.getItem('token');
   }
 
-  cargarHospitales() {
-    const url = `${this.url}hospital`;
+  cargarHospitales(desde: number) {
+    const url = `${this.url}hospital/?desde=${desde}`;
     return this.http.get(url);
   }
 
@@ -30,9 +30,9 @@ export class HospitalesService {
     return this.http.get(url);
   }
 
-  crearHospital(nombre: string) {
+  crearHospital(hosp: Hospital) {
     const url = `${this.url}hospital?token=${this.token}`;
-    return this.http.post(url, nombre).pipe( map( (resp: any) => {
+    return this.http.post(url, hosp).pipe( map( (resp: any) => {
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-start',
@@ -52,16 +52,15 @@ export class HospitalesService {
     return this.http.delete(url);
   }
 
-
   buscarHospitales(termino: string) {
     const url = `${this.url}busqueda/hospital/${termino}`;
-    this.http.get(url).pipe( map ( (resp: any) => resp.hospitales));
+    return this.http.get(url).pipe( map( (resp: any) => resp.hospitales));
   }
 
+
   actualizarHospital(hospital: Hospital) {
-    const nombre = hospital.nombre;
-    const url = `${this.url}hospital/${hospital._id}?token=${this.token}`;
-    this.http.put(url, hospital).pipe( map ( resp => {
+    const url = this.url + 'hospital/' + hospital._id + '?token=' + this.token;
+    return this.http.put(url, hospital).pipe(map((resp: any) => {
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',

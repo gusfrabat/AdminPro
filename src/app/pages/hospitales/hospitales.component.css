@@ -1,0 +1,14 @@
+.crdmr {
+  border-radius: 15%;
+}
+
+table thead tr th {
+  text-align: center;
+}
+
+table tbody tr td {
+  text-align: center;
+}
+.w200 {
+  width: 200px;
+}
