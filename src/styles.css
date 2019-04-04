@@ -7,10 +7,30 @@
   width: 150px;
 }
 
-.w70 {
-  width: 70px;
+.w55 {
+  width: 55px;
 }
 
 .img50 {
   width: 50px;
+}
+
+.w140 {
+  width: 140px;
+}
+
+.pading-10 {
+  padding: 10px;
+}
+
+table thead tr th {
+  text-align: center;
+}
+
+table tbody tr td {
+  text-align: center;
+}
+
+.crdmr {
+  border-radius: 15%;
 }

@@ -4,6 +4,7 @@ import { Hospital } from '../models/hospital.model';
 import { GLOBAL } from '../config/config';
 import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -11,13 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class HospitalesService {
   url: string;
-  token: string;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private authS: AuthService
   ) {
     this.url = GLOBAL.url;
-    this.token = localStorage.getItem('token');
   }
 
   cargarHospitales(desde: number) {
@@ -30,9 +30,9 @@ export class HospitalesService {
     return this.http.get(url);
   }
 
-  crearHospital(hosp: Hospital) {
-    const url = `${this.url}hospital?token=${this.token}`;
-    return this.http.post(url, hosp).pipe( map( (resp: any) => {
+  crearHospital(nombre: string) {
+    const url = `${this.url}hospital?token=${this.authS.token}`;
+    return this.http.post(url, {nombre}).pipe( map( (resp: any) => {
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-start',
@@ -48,7 +48,7 @@ export class HospitalesService {
   }
 
   borrarHospital(id: string) {
-    const url = `${this.url}hospital/${id}?token=${this.token}`;
+    const url = `${this.url}hospital/${id}?token=${this.authS.token}`;
     return this.http.delete(url);
   }
 
@@ -59,7 +59,7 @@ export class HospitalesService {
 
 
   actualizarHospital(hospital: Hospital) {
-    const url = this.url + 'hospital/' + hospital._id + '?token=' + this.token;
+    const url = this.url + 'hospital/' + hospital._id + '?token=' + this.authS.token;
     return this.http.put(url, hospital).pipe(map((resp: any) => {
       const Toast = Swal.mixin({
         toast: true,

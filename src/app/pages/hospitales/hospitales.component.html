@@ -24,7 +24,7 @@
   <div *ngIf="!cargando" class="row">
     <div class="col-12">
       <div class="card">
-        <div class="card-body">
+        <div class="pading-10">
           <div class="col-12">
             <div class="text-right">
               <button (click)="sweetAlert()" class="btn btn-rounded btn-themecolor"><i class="fa fa-plus"></i> Crear hospital</button>
@@ -41,9 +41,9 @@
             </thead>
             <tbody>
               <tr *ngFor="let hospital of hospitales">
-                <td class="w70"><img (click)="abrirModal(hospital._id)" class="img50 img-circle pointer" [src]="hospital.img | imagen:'hospitales'" [alt]="hospital.nombre"></td>
+                <td class="w55"><img (click)="abrirModal(hospital._id)" class="img50 img-circle pointer" [src]="hospital.img | imagen:'hospitales'" [alt]="hospital.nombre"></td>
                 <td><input type="text" [(ngModel)]="hospital.nombre" class="form-control text-center"></td>
-                <td class="w200">
+                <td class="w140">
                   <button (click)="actualizarHospital(hospital)" class="btn btn-success mr-1"><i class="fa fa-save"></i></button>
                   <button (click)="borrarHospital(hospital)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
                 </td>

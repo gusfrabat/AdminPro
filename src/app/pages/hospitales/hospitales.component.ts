@@ -14,14 +14,11 @@ export class HospitalesComponent implements OnInit {
   hospitales: Hospital;
   totalR = 0;
   desde = 0;
-  hosp: Hospital;
 
   constructor(
     private hospitalS: HospitalesService,
     private modalUpload: ModalUploadService,
-  ) {
-    this.hosp = new Hospital('');
-   }
+  ) {}
 
   ngOnInit() {
     this.cargarHospitales();
@@ -63,13 +60,12 @@ export class HospitalesComponent implements OnInit {
       confirmButtonText: 'Crear'
     });
     if (hospital) {
-      this.hosp.nombre = hospital;
-      this.hospitalS.crearHospital(this.hosp ).subscribe( () => this.cargarHospitales());
+       this.hospitalS.crearHospital(hospital).subscribe( () => this.cargarHospitales());
     }
   }
 
   actualizarHospital(hospital: Hospital) {
-    this.hospitalS.actualizarHospital(hospital).subscribe( resp => this.cargarHospitales());
+    this.hospitalS.actualizarHospital(hospital).subscribe();
   }
 
   borrarHospital(hospital: Hospital) {

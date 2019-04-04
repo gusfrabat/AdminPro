@@ -25,9 +25,9 @@
   <div *ngIf="!cargando" class="row">
     <div class="col-12">
       <div class="card">
-        <div class="card-body">
+        <div class="pading-10">
           <h3 class="card-title">Usuario registrados (<small>{{totalR}}</small>)</h3>
-          <table class="table table-hover table-bordered">
+          <table class="table table-hover table-bordered table-responsive">
             <thead>
               <tr>
                 <th>Imagen</th>
@@ -40,7 +40,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let usuario of usuarios">
-                <td class="w70"><img (click)="abrirModal(usuario._id)" class="img50 img-circle pointer" [src]="usuario.img | imagen" [alt]="usuario.img | imagen">
+                <td class="w55"><img (click)="abrirModal(usuario._id)" class="img50 img-circle pointer" [src]="usuario.img | imagen" [alt]="usuario.img | imagen">
                 </td>
                 <td>{{usuario.email}}</td>
                 <td>{{usuario.nombres}} {{usuario.apellidos}}</td>
@@ -54,7 +54,7 @@
                   <label *ngIf="usuario.google" class="label label-danger">Google</label>
                   <label *ngIf="!usuario.google" class="label label-info">Normal</label>
                 </td>
-                <td>
+                <td class="w140">
                   <button (click)="guardarUsuRol(usuario)" class="btn btn-success mr-1"><i class="fa fa-save"></i></button>
                   <button (click)="borrarUsuario(usuario)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
                 </td>
