@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicoComponent } from './medico/medico.component';
 
 
 
@@ -32,7 +33,8 @@ const pagesRoutes: Routes = [
             { path: 'profile', component: ProfileComponent, data: {titulo: 'Mi perfil'} },
             // Mantenimiento
             { path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Mantenimiento usuario'} },
-            { path: 'medicos', component: MedicosComponent, data: {titulo: 'Mantenimiento medico'} },
+            { path: 'medicos', component: MedicosComponent, data: {titulo: 'Mantenimiento médicos'} },
+            { path: 'medico/:id', component: MedicoComponent, data: {titulo: 'Actualizar medico'} },
             { path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Mantenimiento hospitales'} },
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
         ]

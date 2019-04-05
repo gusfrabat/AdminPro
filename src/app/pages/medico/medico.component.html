@@ -1,0 +1,54 @@
+<div class="row animated fadeIn">
+  <div class="col-md-6">
+    <div class="card pading-10">
+      <h3 class="box-title m-b-0">Medico {{medico.nombre}}</h3>
+      <p *ngIf="crear" class="text-muted m-b-30 font-13"> crear médico </p>
+      <p *ngIf="!crear" class="text-muted m-b-30 font-13"> Editar médico </p>
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarMedico(f)">
+            <div class="form-group">
+              <label for="nommed">Nombre médico</label>
+              <input [(ngModel)]="medico.nombre" name="nombre" type="text" class="form-control" id="nommed" placeholder="Nombre médico" required>
+            </div>
+            <div class="form-group">
+              <label for="">Hospital:</label>
+              <select (change)="cambioHospital($event.target.value)"  [(ngModel)]="medico.hospital" name="hospital" class="form-control" required>
+                <option disabled value="">Seleccione hospital</option>
+                <option *ngFor="let hospital of hospitales" [value]="hospital._id">{{hospital.nombre}}</option>
+              </select>
+            </div>
+            <div>
+              <button *ngIf="!crear" type="submit" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-pencil"></i>
+                Actualizar</button>
+              <button *ngIf="crear" type="submit" class="btn btn-primary waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>
+                Crear</button>
+              <button type="button" [routerLink]="['/medicos']" routerLinkActive="router-link-active"  class="btn btn-secondary waves-effect waves-light m-r-10"><i class="fa fa-arrow-circle-o-left"></i>
+                Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col">
+    <div class="card">
+      <div class="pading-10">
+        <h4 class="box-title m-b-0">Hospital: {{hospital.nombre}}</h4>
+        <img [src]="hospital.img | imagen:'hospitales'" [alt]="hospital.nombre" class="img-fluid img-thumbnail mt-3 pointer">
+      </div>
+    </div>
+  </div>
+
+  <div class="col" *ngIf="medico._id">
+    <div class="card">
+      <div class="pading-10">
+        <h4 class="box-title m-b-0">Imagen médico</h4>
+        <img (click)="abrirModal(medico._id)" [src]="medico.img | imagen:'medicos'" class="img-fluid img-thumbnail img-rounded mt-3 pointer" alt="imagen hospital">
+      </div>
+    </div>
+  </div>
+
+</div>

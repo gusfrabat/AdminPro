@@ -22,6 +22,7 @@ export class HospitalesComponent implements OnInit {
 
   ngOnInit() {
     this.cargarHospitales();
+    this.modalUpload.notificacion.subscribe(() => this.cargarHospitales());
   }
 
   cargarHospitales() {

@@ -22,6 +22,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+import { MedicoComponent } from './medico/medico.component';
 
 
 
@@ -40,7 +41,8 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
         UsuariosComponent,
         MedicosComponent,
         HospitalesComponent,
-        ModalUploadComponent
+        ModalUploadComponent,
+        MedicoComponent
     ],
     exports: [
         DashboardComponent,

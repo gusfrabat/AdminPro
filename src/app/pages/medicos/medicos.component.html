@@ -1,3 +1,74 @@
-<p>
-  medicos works!
-</p>
+<div class="animated fadeIn">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card crdmr">
+        <div class="card-body">
+          <input #input (keyup)="buscarMedicos(input.value)" class="form-control" type="text"
+            placeholder="Buscar médico">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="cargando" class="row">
+    <dir class="col-12">
+      <div class="alert alert-warning text-center">
+        <strong>Cargando ...</strong>
+        <br>
+        <i class="fa fa-spinner fa-spin fa-2x"></i>
+        <br>
+        <span>Espere por favor</span>
+      </div>
+    </dir>
+  </div>
+
+  <div *ngIf="!cargando" class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="pading-10">
+          <div class="col-12">
+            <div class="text-right">
+              <button [routerLink]="['/medico', 'nuevo']" routerLinkActive="router-link-active"  class="btn btn-rounded btn-themecolor"><i class="fa fa-plus"></i> Crear
+                médicos</button>
+            </div>
+            <h3 class="card-title">Médicos registrados (<small>{{totalR}}</small>)</h3>
+          </div>
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Médico</th>
+                <th>Hospital</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let medico of medicos">
+                <td class="w55">
+                  <img class="img50 img-circle pointer" [src]="medico.img | imagen:'medicos'" [alt]="medico.nombre">
+                </td>
+                <td>
+                  {{medico.nombre}}
+                </td>
+                <td>
+                  <p>{{medico.hospital.nombre}}</p>
+                </td>
+                <td class="w140">
+                  <button [routerLink]="['/medico', medico._id]" class="btn btn-success mr-1"><i
+                      class="fa fa-edit"></i></button>
+                  <button (click)="borrarMedico(medico)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-around">
+            <button (click)="cambiarDesde(-5)" class="btn btn-secondary"> Anteriores</button>
+            <button (click)="cambiarDesde(5)" class="btn btn-secondary"> Siguientes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -25,6 +25,11 @@ export class HospitalesService {
     return this.http.get(url);
   }
 
+  cargarTodosLosHospitales() {
+    const url = `${this.url}hospital/todos`;
+    return this.http.get(url);
+  }
+
   obtenerHospital(id:	string) {
     const url = `${this.url}hospital/${id}`;
     return this.http.get(url);
