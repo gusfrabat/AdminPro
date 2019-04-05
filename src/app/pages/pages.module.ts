@@ -23,6 +23,7 @@ import { MedicosComponent } from './medicos/medicos.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 import { MedicoComponent } from './medico/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 
@@ -42,7 +43,8 @@ import { MedicoComponent } from './medico/medico.component';
         MedicosComponent,
         HospitalesComponent,
         ModalUploadComponent,
-        MedicoComponent
+        MedicoComponent,
+        BusquedaComponent
     ],
     exports: [
         DashboardComponent,
