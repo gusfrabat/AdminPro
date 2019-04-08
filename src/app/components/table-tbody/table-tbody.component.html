@@ -1,0 +1,22 @@
+<div class="col animated fadeIn">
+    <div class="card">
+      <div class="pading-10">
+        <h4 class="card-title">{{tipo}}</h4>
+        <table class="table table-hover">
+          <tbody>
+            <tr (click)="irPagina(dato)" class="pointer" *ngFor="let dato of datos">
+              <td  class="w55">
+                <img
+                  class="img50 img-circle "
+                  [src]="dato.img | imagen"
+                  [alt]="dato.img | imagen"
+                />
+              </td>
+              <td  *ngIf="tipo === 'Usuarios'">{{ dato.nombres }} {{ dato.apellidos }}</td>
+              <td  *ngIf="tipo !== 'Usuarios'">{{ dato.nombre }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

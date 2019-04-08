@@ -1,3 +1,12 @@
-<p>
-  busqueda works!
-</p>
+
+<div class="row " *ngIf="!nada">
+  <app-table-tbody class="col animated fadeIn" *ngIf="u" [datos]="usuarios" [tipo]="'Usuarios'"></app-table-tbody>
+  <app-table-tbody class="col animated fadeIn" *ngIf="h" [datos]="hospitales" [tipo]="'Hospitales'"></app-table-tbody>
+  <app-table-tbody class="col animated fadeIn" *ngIf="m" [datos]="medicos" [tipo]="'Médicos'"></app-table-tbody>
+</div>
+
+<div class="col" *ngIf="nada">
+  <div class="jumbotron text-center">
+    <h3>No hay registro con esos datos</h3>
+  </div>
+</div>

@@ -108,7 +108,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   guardarUsuRol(usuario: Usuario) {
-    this.usuS.actualizarUsuario(usuario).subscribe(resp => console.log(resp));
+    this.usuS.actualizarUsuario(usuario).subscribe();
   }
 
 }

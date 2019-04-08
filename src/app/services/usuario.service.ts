@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { GLOBAL } from 'src/app/config/config';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { AuthService } from './auth.service';
 import { SubirArchivoService } from './settings/subir-archivo.service';
+import { throwError } from 'rxjs';
 
 
 @Injectable({
@@ -39,13 +40,28 @@ export class UsuarioService {
         title: 'Usuario creado ' + ' ' + usuario.email
       });
       return resp.usuario;
-    }));
+    }),
+    catchError(err => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3500
+      });
+      Toast.fire({
+        type: 'error',
+        title: err.error.mensaje,
+        text: err.error.error.errors.email.message
+      });
+      return throwError(err);
+    })
+    );
   }
 
   actualizarUsuario(usuario: Usuario) {
     const url = this.url + 'usuario/' + usuario._id + '?token=' + this.token;
     return this.http.put(url, usuario).pipe(map((resp: any) => {
-      this.authS.guardarStorage(this.token, resp.usuario);
+      this.authS.guardarStorage(this.token, resp.usuario, this.authS.menu);
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -75,7 +91,7 @@ export class UsuarioService {
         type: 'success',
         title: 'Imagen del usuario actualizada'
       });
-      this.authS.guardarStorage(this.token, this.usuario);
+      this.authS.guardarStorage(this.token, this.usuario, this.authS.menu);
     }).catch( err => {
       console.error(err);
     });

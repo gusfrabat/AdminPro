@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 declare function init_pluings(): any;
 
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
-  styles: ['./page-not-found.component.css']
+  styleUrls: ['./page-not-found.component.css']
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor() { }
+  year: number;
+
+  constructor(
+    private authS: AuthService
+  ) {
+    this.year = new Date().getFullYear();
+  }
 
   ngOnInit() {
     init_pluings();

@@ -24,7 +24,7 @@ import { HospitalesComponent } from './hospitales/hospitales.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 import { MedicoComponent } from './medico/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-
+import { TableTbodyComponent } from '../components/table-tbody/table-tbody.component';
 
 
 @NgModule({
@@ -44,7 +44,8 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
         HospitalesComponent,
         ModalUploadComponent,
         MedicoComponent,
-        BusquedaComponent
+        BusquedaComponent,
+        TableTbodyComponent
     ],
     exports: [
         DashboardComponent,

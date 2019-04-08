@@ -42,23 +42,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     init_pluings();
-    this.forma = new FormGroup({
-      nombres: new FormControl(null, Validators.required),
-      apellidos: new FormControl(null, Validators.required ),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, Validators.required),
-      password2: new FormControl(null, Validators.required),
-      condiciones: new FormControl(false)
-    }, {validators: this.sonIguales('password', 'password2')});
-
-    this.forma.setValue ({
-      nombres: 'test ',
-      apellidos: 'test ',
-      email: 'test@test.test',
-      password: '123456',
-      password2: '123456',
-      condiciones: true
-    });
+    this.CrearFrom();
   }
 
   CrearFrom() {
@@ -70,15 +54,6 @@ export class RegisterComponent implements OnInit {
       password2: new FormControl(null, Validators.required),
       condiciones: new FormControl(false)
     }, {validators: this.sonIguales('password', 'password2')});
-
-    this.forma.setValue ({
-      nombres: 'test',
-      apellidos: 'test',
-      email: 'test@test.test',
-      password: '123456',
-      password2: '123456',
-      condiciones: true
-    });
   }
 
   registrarUsuario() {

@@ -63,7 +63,10 @@ export class LoginComponent implements OnInit {
       return;
     }
     const usuario = new Usuario(null, null, forma.value.email, forma.value.password);
-    this.authS.login(usuario, forma.value.recuerdame).subscribe( ok => this.router.navigate(['/dashboard']));
+    this.authS.login(usuario, forma.value.recuerdame).subscribe( resp => {
+      this.router.navigate(['/dashboard']);
+    });
+    forma.reset('');
   }
 
 }
