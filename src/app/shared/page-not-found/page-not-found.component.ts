@@ -13,7 +13,7 @@ export class PageNotFoundComponent implements OnInit {
   year: number;
 
   constructor(
-    private authS: AuthService
+    public authS: AuthService
   ) {
     this.year = new Date().getFullYear();
   }

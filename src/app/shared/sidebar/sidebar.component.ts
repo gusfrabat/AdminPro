@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private sidebarS: SidebarService,
-    private authS: AuthService
+    public authS: AuthService
     ) { }
 
   ngOnInit() {

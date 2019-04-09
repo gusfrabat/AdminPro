@@ -57,6 +57,21 @@ export class AuthService {
     }));
    }
 
+   renovarToken() {
+    const url = this.url + 'login/renuevatoken?token=' + this.token;
+    return this.http.get(url).pipe( map((resp: any) => {
+      this.token = resp.token;
+      localStorage.setItem('token', this.token);
+      console.warn('token renovado');
+      return true;
+    }),
+    catchError( err => {
+      this.logout();
+      return throwError(err);
+    })
+    );
+   }
+
   login( usuario: Usuario, recordar = false) {
     if (recordar) {
       localStorage.setItem('email', usuario.email);
@@ -80,7 +95,7 @@ export class AuthService {
         title: 'Error en el login',
         text: err.error.mensaje
       });
-      
+
       return throwError(err);
     })
     );

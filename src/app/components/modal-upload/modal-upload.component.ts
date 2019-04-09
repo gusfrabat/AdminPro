@@ -17,7 +17,7 @@ export class ModalUploadComponent implements OnInit {
   constructor(
     private subirA: SubirArchivoService,
     private usuS: UsuarioService,
-    private modalUpload: ModalUploadService
+    public modalUpload: ModalUploadService
   ) {
    }
 
